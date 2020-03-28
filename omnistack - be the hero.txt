@@ -1,0 +1,205 @@
+// Primeiro dia!
+
+
+Iniciando coding da semana omnistack!
+
+Inicialmente foi criado pastas para armazenar o projeto corretamente, que foi primeiramente alocado em 'www'.
+Primeira aula, após instruções iniciais, começamos com o Backend em Node.js
+
+Diretório inicial: www/BeTheHero/classes/backend
+
+Instalado o package 'Express' (npm install express),é um mini-framework que serve para fazer configurações básicas de rotas ( https://www.bethehero.com.br/classes/backend ) <-- contém funções básicas de comunicação e location de diretórios.
+
+Criada pasta index.js ( que é onde fica toda a aplica, parecido com um index.html ).
+
+Usar 'const express = require('express');' para puxar o express para dentro da aplicação.
+
+Usar uma variável 'app' para guardar nossa aplicação e depois mostrar ela em 'app.listen(3333);' faz com que essa aplicação seja mostrada somente nesta porta, isso impede alguns erros de sistemas operacionais e evita problemas.
+
+'npx' executa um pacote externo sem precisar instalar.
+
+Para instalar um novo file react zerado, usa-se o comando "npx create-react-app 'file name'".
+
+Do Start no file do react e aparecer na tela, dentro da pasta usa-se o comando 'npm start'. Ele será aberto na porta 3000 (localhost:3000).
+
+
+// Segundo dia
+
+
+- Rotas e Recursos
+
+    Quando se cria uma rota, é necessário criar um caminho dentro da rota, que normalmente é chamado de 'recurso'
+
+    Rota é o conjunto completo, exemplo: https://localhost/
+
+    Recurso é o que vem depois, o que está sendo acessado: https://localhost/users <--
+
+- Métodos http
+
+    GET: buscar/listar uma informação do back-end
+
+        sempre que acessa uma rota no navegador ele usa GET
+
+    POST: criar uma informação no back-end
+
+    PUT: alterar uma informação do back-end
+
+    DELETE: deletar uma informação do back-end
+
+- Insomnia
+
+    É usado para testar as rotas do back-end
+
+- Tipos de parâmentros
+
+    Query Params: são parâmetros nomeados que são enviados na rota após o simbolo '?', usado para ( filtro, paginação )
+
+        Exemplo: http://localhost:3333/users?page=2&name=Vinicius&idade=20
+
+        Para acessar o Query, usasse o parâmetro request do get para com 'query'. exemplo: ( const params = request.query ). Fazendo isso irá retornar todos os parâmetros passados pela rota, usando 'query'.
+
+    Route Params: parâmentros usados para identificar recursos
+
+        Você busca pelo 'request.params'
+
+    Request Body: corpo da requisição, utilizado para criar ou alterar recursos
+
+        Você faz o envio por 'request.body', caso não informe para o express qual formato está sendo enviado, vai retornar 'undefined'
+
+        Para dizer ao express qual formato usa-se: 'app.use(express.json());'... Sendo 'app' uma const que está armazenando o require que executa o express dentro do index.js.
+
+- NPM
+
+    se usar -D ao instalar um package, ele instala na aplicação como um devDependencies( que são packages que só serão utilizados durante o desenvolvimento )
+
+- Database
+
+    Vamos usar um banco de dados relacional, que vai ser em SQL, foi utilizado então inicialmente SQLite
+
+    - Formas de se comunicação
+
+        Driver: usa-se "SELECT * FROM users" ( é o pacote oficial do banco de dados para node ) 
+
+        Query Builder: table('users).select('*').where() ( com javascript )
+
+- Organizando arquivos
+
+    Foi feito uma pasta src ( sources ) para armazenar tudo que criarmos
+
+- Organização de rotas
+
+    Dentro de um arquivo 'routes.js' criamos usamos a função 'Router()' em express para utilizar o organizador de rotas do express. Para que assim não seja necessário usar várias rotas diferentes, deixando o código bagunçado
+
+- Observações
+
+    Sempre que for dar require em um arquivo usar './nome-do-arquivo' e não somente 'nome-do-arquivo', porque a aplicação vai entender como um Package
+
+- Entidades
+
+    > Ong
+
+    > Cases ( incident )
+
+- Funcionalidades
+
+    > Login de Ong
+
+    > Logout de Ong
+
+    > Cadastrar de Ong
+
+    > Cadastrar novos casos
+
+    > Deletar casos
+
+    > Listar casos expecíficos de uma Ong
+
+    > Listar todos os casos
+
+    > Entrar em contato com a Ong
+
+- Migration 
+
+    Cria um histórico de tabelas criada, podemos saber quando foi criada, se um campo foi alterado por outro ( tipo um versionamento )
+
+    Caso um novo desenvolvedo quiser recriar essas tabelas, ele usa o migration, não precisa criar o banco de dados do zera
+
+    ( Isso é uma funcionalidade do Knex js )
+
+    Para iniciar o Migration, dentro do arquivo 'knexfile.js, em 'deveploment' que é a área onde colocamos onde ficará nosso banco de dados e qual tipo de banco de dados estamos usando, neste caso 'sqlite3'. Em baixo de 'connection' colocamos as informações sobre o diretório onde vai ser armazenado o migration
+
+    Logo, iniciamos o código 'npx migrate:make 'nome-da-tabel', fazemos isso para criar a tabela onde vamos armazenar uma informação em expecífico
+
+    Para retirar o warning 'useNullAsDefault' é só coloca-lo como true depois de migrations do arquivo 'knexfile.js'
+
+        Isso acontece porque o 'sqlite' não aceita values padrão nos campos das tabelas, por isso usamos isso, para que todos os valores padrão sejam colocados como 'null'
+
+    Para criar as tabelas, usa-se a estrutura do knex, que pode ser encontrado no sistemas
+
+    Para criar uma tabela dentro do arquivo gerado pelo knex, usa-se 'knex.schema.createTable( 'table-name', function(table) {}'
+
+        Dentro da function, coloca os itens da tabela, por exemplo: 'table.string('id').primary();' para criar o ID
+
+        Limitando quantidade de caracteres dentro do item da tabela com um segundo parâmentro, exemplo: 'table.string('uf', 2).notNullable();'
+
+    > Método Up: Responsável pela criação da tabela, é o que acontece quando executa sua migration
+
+    > Método Down: É o que a migration tem que fazer caso de algum problema e precisa-se deletar a tabela, usando: 'knex.schema.dropTable('ongs');'
+
+    Para finalmente criar a tabela, depois das configurações da mesma, usa-se o comando: 'npx knex migrate:latest'
+
+    ( Não esquecer de colocar o return antes da função ) > 'return knex.schema.dropTable('ongs');'
+
+    Em seguida, seguimos com a criação das outras migrates...
+
+    Auto-incriment > 'table.increments();'
+
+    Para referenciar um 'id' de outra tabela usa-se:
+
+        'table.string('ong_id').notNullable();'
+
+        'table.foreign('ong_id').references('id').inTable('ongs');'
+
+    Para desfazer a ultima migration que foi feita, usa-se 'npx knex migrate:rollback'
+
+    'npx knex' lista todos os comandos que temos
+
+    'npx knex migrate:status' lista todas migrates que já foram executadas
+
+- Criar ongs
+
+    Bom armazenar todos os dados do request.body dentro de sua própria variável, usando uma array const { name, email, etc..}
+
+    Criamos o ID com o pacote 'crypto'
+
+    Primeiramente é criado um arquivo 'connection.js' para fazer a conexão com o banco, podendo assim inserir informações no mesmo
+
+    Para inserir é usado um require com o arquivo 'connection.js', em seguida usa-se uma função 'insert()' que usa uma estrutura parecida com um json para inserir informações'
+
+        Exemplo: 
+
+            connection('ongs').insert({
+                id,
+                name,
+                email,
+                whatsapp,
+                city,
+                uf,
+            });
+
+    A função 'insert()' pode demorar para responder, então necessário deixar a função 'routes' > 'async' e definir o 'connection' que faz o 'insert()' com um 'await' no começo, para que assim ele espere para ser executado e seja mostrado algo com o json antes
+
+    No Json vai ser retornado para o cliente da aplicação somente o 'id', que vai ser como um 'CPF' da ong cadastrada
+
+    
+
+- Crypto 
+
+    É um pacote de criptografia que já vem com o node
+
+    Usamos um método dele para criar um texto aleatório, para usar como ID
+    
+- Request
+
+    'request.header' Guarda qual contexto está a requisição, a autenticação fica aqui dentro
+
