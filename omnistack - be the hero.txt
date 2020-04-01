@@ -203,3 +203,91 @@ Do Start no file do react e aparecer na tela, dentro da pasta usa-se o comando '
 
     'request.header' Guarda qual contexto está a requisição, a autenticação fica aqui dentro
 
+
+
+
+// Terceiro dia
+
+
+Deletamos inicialmente alguns arquivos gerados pelo react, foram deletados;
+
+    - README.md
+    - App.css
+    - App.test.js
+    - index.css
+    - logo.svg
+    - ServicesWorker.js
+    - setupTests.js
+
+Dentro de public foram excluídos;
+
+    - logo192.png
+    - logo512.png
+    - manifest.json
+    - robots.txt
+
+Para visualizar no navegador usa-se: http://localhost:3000
+
+Quando o html está escrito dentro do código js, sem ser uma string, isso se chama JSX
+
+JSX ( JavaScript XML ) XML é a sintax do HTML
+
+- React
+
+    - Propriedades
+
+        Os atributos são passados para os componentes ao invés dos elementos do HTML
+
+        Se colocar um "atributo" no componente que criei, por exemplo <Header title="Something" />. Eu pego essa informação dentro do meu arquivo do componente como uma propriedade, exemplo: "export default function Header( props )"
+
+        Para usar o "atributo" usa-se, por exemplo: "<h1> { props.title } </h1>"
+
+        Caso não queira usar um atributo, e sim pegar o que estiver dentro da 'tag', usa-se uma propriedade que já chamada "children", exemplo: '<h1> { props.children } </h1>
+
+        Em "export default function Header( props )" em vez de usar 'props' para pegar as propriedades, eu posso colocar somente as propriedades que eu quero pegar, ai no componente não precisa usar 'props.EAPropriedade' somente 'APropriedade'
+
+    -Estado
+
+        Uma informação que vai ser mantida pelo componente
+
+        Usando 'useState' para fazer alterações com renderização em realtime, não é possível fazer uma alteração direta( por questão de performace ). Então usa-se um array que vai definir um atualizador deste valor... Array [ valor, funcaoDeAtualizacao ]
+
+            É colocado dentro da função assim: 'setCounter( counter++ );'
+
+            Variável usada: 'const [ counter, setCounter ] = useState( 0 );'
+
+Instalados no projeto:
+
+    npm install react-icons
+
+E foi instalado no front-end para criar o o route o:
+
+    npm install react-router-dom
+
+Usa-se 'exact' como atributo para definir que o dom só acesse está rota quando for exatamente igual, assim evita que entre sempre na rota '/'
+
+npm install axios
+
+    É um cliente http, que é responsável por fazer uma chamada ao backend e conseguir respostas
+
+- useEffect
+
+    Está é um função do react que serve para disparar uma função em um determinado momento, por exemplo: quando é mostrado em tela
+
+        useEffect( () => {
+            // Alguma ação
+        }, [ variavel, variavel_2 ]);
+
+        Cada vez que uma variavel muda seu valor, a função useEffect é executada novamente, tipo um realtime
+
+- map 
+
+    Serve para multiplicar um template com informações, parecido com um for each
+
+    Para que funcione bem o react pede um key para enconrtar qual item é qual
+
+- Intl
+
+    É uma classe global do js que é respectiva a 'Internacionalização', tem varios recursos de formatação, como por exemplo: number formatação
+
+    
