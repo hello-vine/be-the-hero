@@ -6,6 +6,8 @@ Iniciando coding da semana omnistack!
 Inicialmente foi criado pastas para armazenar o projeto corretamente, que foi primeiramente alocado em 'www'.
 Primeira aula, após instruções iniciais, começamos com o Backend em Node.js
 
+* Foi usado para fazer design o Figma
+
 Diretório inicial: www/BeTheHero/classes/backend
 
 Instalado o package 'Express' (npm install express),é um mini-framework que serve para fazer configurações básicas de rotas ( https://www.bethehero.com.br/classes/backend ) <-- contém funções básicas de comunicação e location de diretórios.
@@ -290,4 +292,17 @@ npm install axios
 
     É uma classe global do js que é respectiva a 'Internacionalização', tem varios recursos de formatação, como por exemplo: number formatação
 
+- Expo
+
+    npm install -g expo-cli ( Instala o expo globalmente na máquina )
+
     
+    expo init nome-da-aplicação - para iniciar um app expo
+
+    Se tiver usando git bash - expo init nome-do-projeto --template blank
+
+- React Navigation, fiz a instalação seguindo a documentação oficial
+
+- Fiz instalação do 'expo install expo-constants'
+
+    Com isso nós conseguimos obter alguns constantes, com por exemplo o tamanho da status bar
