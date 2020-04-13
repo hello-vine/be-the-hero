@@ -292,6 +292,9 @@ npm install axios
 
     É uma classe global do js que é respectiva a 'Internacionalização', tem varios recursos de formatação, como por exemplo: number formatação
 
+
+// Quarto dia
+
 - Expo
 
     npm install -g expo-cli ( Instala o expo globalmente na máquina )
@@ -306,3 +309,48 @@ npm install axios
 - Fiz instalação do 'expo install expo-constants'
 
     Com isso nós conseguimos obter alguns constantes, com por exemplo o tamanho da status bar
+
+- npm install celebrate
+
+    Ele integra o Joy com o Express, serve para fazer validações
+
+    Joi é um pacote de validações, muito legal !
+
+    
+// Quinto dia
+
+    - Coisas mais avançadas
+
+        - Iniciamos com verificações de formulario
+
+        - TDD ( Test-driven Development )
+
+            - npm install jest
+
+                - npx jest --init
+
+                unit para testes unicos
+
+                integration para teste inteiro da aplicação
+
+        -  npm install cross-env
+
+            Em test no package.json "cross-env NODE_ENV=test jest"
+
+        - arquivo server.js criado para separar endereço de test do endereço que o user ve a aplicação, para que durante os testes somente o "tester" veja o test ocorrendo
+
+            - index.js virou app.js ( tem que fazer alteração no package.json tambem)
+
+        - Deploy
+
+            - Heroku para colocar api simples de graça
+
+                aplicações maiores é caro colocar lá
+
+            - Digital ocean
+
+                Para hospedar aplicação com qualidade e de forma barata
+
+            - Para front end usar netlify
+
+                Só funciona para para front end
